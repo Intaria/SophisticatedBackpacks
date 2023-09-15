@@ -43,7 +43,7 @@ repositories {
 }
 
 group = 'sophisticatedbackpacks'
-version = "${project.minecraft_version}-${project.mod_version}.${getBuildNumber()}${getStable()}"
+version = "${project.minecraft_version}-${project.mod_version}"
 archivesBaseName = 'sophisticatedbackpacks'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '17'

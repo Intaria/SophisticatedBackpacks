@@ -93,9 +93,7 @@ public class EntityBackpackAdditionHandler {
 	);
 
 	private static final Map<Integer, List<WeightedElement<BackpackAddition>>> DIFFICULTY_BACKPACK_CHANCES = Map.of(
-			0, BACKPACK_CHANCES,
-			1, BACKPACK_CHANCES.subList(1, 5),
-			2, BACKPACK_CHANCES.subList(2, 5)
+			0, BACKPACK_CHANCES
 	);
 
 	static void addBackpack(Monster monster, LevelAccessor level) {

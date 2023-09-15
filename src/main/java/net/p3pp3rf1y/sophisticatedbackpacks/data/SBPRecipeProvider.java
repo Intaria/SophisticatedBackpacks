@@ -42,6 +42,7 @@ public class SBPRecipeProvider extends RecipeProvider {
 				.save(consumer);
 
 		SpecialRecipeBuilder.special(ModItems.BACKPACK_DYE_RECIPE_SERIALIZER.get()).save(consumer, SophisticatedBackpacks.getRegistryName("backpack_dye"));
+
 	}
 
 	private static InventoryChangeTrigger.TriggerInstance hasLeather() {

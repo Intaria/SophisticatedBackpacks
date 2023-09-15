@@ -75,7 +75,7 @@ public class Config {
 			noInteractionBlocks = new NoInteractionBlocks(builder);
 			noConnectionBlocks = new NoConnectionBlocks(builder);
 
-			leatherBackpack = new BackpackConfig(builder, "Leather", 27, 1);
+			leatherBackpack = new BackpackConfig(builder, "Leather", 27, 0);
 			
 			stackUpgrade = new StackUpgradeConfig(builder);
 			entityBackpackAdditions = new EntityBackpackAdditionsConfig(builder);
