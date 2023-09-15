@@ -84,22 +84,10 @@ public class EntityBackpackAdditionHandler {
 	);
 
 	private static final Map<Item, Float> dropChanceMultiplier = Map.of(
-			ModItems.BACKPACK.get(), 1F,
-			ModItems.IRON_BACKPACK.get(), 1.5F,
-			ModItems.GOLD_BACKPACK.get(), 3F,
-			ModItems.DIAMOND_BACKPACK.get(), 4.5F,
-			ModItems.NETHERITE_BACKPACK.get(), 6F
+			ModItems.BACKPACK.get(), 1F
 	);
 
 	private static final List<WeightedElement<BackpackAddition>> BACKPACK_CHANCES = List.of(
-			new WeightedElement<>(1, new BackpackAddition(ModItems.NETHERITE_BACKPACK.get(), 4,
-					HELMET_CHANCES.subList(0, 1), LEGGINGS_CHANCES.subList(0, 1), BOOTS_CHANCES.subList(0, 1))),
-			new WeightedElement<>(5, new BackpackAddition(ModItems.DIAMOND_BACKPACK.get(), 3,
-					HELMET_CHANCES.subList(0, 2), LEGGINGS_CHANCES.subList(0, 2), BOOTS_CHANCES.subList(0, 2))),
-			new WeightedElement<>(25, new BackpackAddition(ModItems.GOLD_BACKPACK.get(), 2,
-					HELMET_CHANCES.subList(1, 3), LEGGINGS_CHANCES.subList(1, 3), BOOTS_CHANCES.subList(1, 3))),
-			new WeightedElement<>(125, new BackpackAddition(ModItems.IRON_BACKPACK.get(), 1,
-					HELMET_CHANCES.subList(2, 4), LEGGINGS_CHANCES.subList(2, 4), BOOTS_CHANCES.subList(2, 4))),
 			new WeightedElement<>(625, new BackpackAddition(ModItems.BACKPACK.get(), 0,
 					HELMET_CHANCES.subList(3, 5), LEGGINGS_CHANCES.subList(3, 5), BOOTS_CHANCES.subList(3, 5)))
 	);
@@ -156,48 +144,9 @@ public class EntityBackpackAdditionHandler {
 				.ifPresent(w -> {
 					w.setColors(getPrimaryColor(egg), getSecondaryColor(egg));
 					setLoot(monster, w, difficulty, level);
-					if (playMusicDisc) {
-						w.getInventoryHandler(); //just to assign uuid and real upgrade handler
-						if (w.getUpgradeHandler().getSlots() > 0) {
-							monster.addTag(SPAWNED_WITH_JUKEBOX_UPGRADE);
-							addJukeboxUpgradeAndRandomDisc(w, rnd);
-						}
-					}
 				}));
 		monster.setItemSlot(EquipmentSlot.CHEST, backpack);
 		monster.setDropChance(EquipmentSlot.CHEST, 0);
-	}
-
-	private static void addJukeboxUpgradeAndRandomDisc(IStorageWrapper w, RandomSource rnd) {
-		w.getUpgradeHandler().setStackInSlot(0, new ItemStack(ModItems.JUKEBOX_UPGRADE.get()));
-		Iterator<JukeboxUpgradeItem.Wrapper> it = w.getUpgradeHandler().getTypeWrappers(JukeboxUpgradeItem.TYPE).iterator();
-		if (it.hasNext()) {
-			JukeboxUpgradeItem.Wrapper wrapper = it.next();
-			List<RecordItem> musicDiscs = getMusicDiscs();
-			wrapper.setDisc(new ItemStack(musicDiscs.get(rnd.nextInt(musicDiscs.size()))));
-		}
-	}
-
-	private static List<RecordItem> musicDiscs = null;
-
-	private static List<RecordItem> getMusicDiscs() {
-		if (musicDiscs == null) {
-			Map<SoundEvent, RecordItem> records = ObfuscationReflectionHelper.getPrivateValue(RecordItem.class, null, "f_43032_");
-			if (records == null) {
-				musicDiscs = new ArrayList<>();
-			} else {
-				Set<String> blockedDiscs = new HashSet<>(Config.SERVER.entityBackpackAdditions.discBlockList.get());
-				musicDiscs = new ArrayList<>();
-				records.forEach((sound, musicDisc) -> {
-					//noinspection ConstantConditions - by this point the disc has registry name
-					if (!blockedDiscs.contains(ForgeRegistries.ITEMS.getKey(musicDisc).toString())) {
-						musicDiscs.add(musicDisc);
-					}
-				});
-			}
-		}
-
-		return musicDiscs;
 	}
 
 	private static void raiseHealth(Monster monster, int minDifficulty) {

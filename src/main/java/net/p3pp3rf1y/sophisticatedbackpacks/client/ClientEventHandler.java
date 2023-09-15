@@ -37,8 +37,6 @@ import net.p3pp3rf1y.sophisticatedbackpacks.network.SBPPacketHandler;
 
 import java.util.Map;
 
-import static net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems.EVERLASTING_BACKPACK_ITEM_ENTITY;
-
 public class ClientEventHandler {
 	private ClientEventHandler() {}
 
@@ -67,7 +65,7 @@ public class ClientEventHandler {
 	}
 
 	private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerEntityRenderer(EVERLASTING_BACKPACK_ITEM_ENTITY.get(), ItemEntityRenderer::new);
+		//event.registerEntityRenderer(EVERLASTING_BACKPACK_ITEM_ENTITY.get(), ItemEntityRenderer::new);
 		event.registerBlockEntityRenderer(ModBlocks.BACKPACK_TILE_TYPE.get(), context -> new BackpackBlockEntityRenderer());
 	}
 

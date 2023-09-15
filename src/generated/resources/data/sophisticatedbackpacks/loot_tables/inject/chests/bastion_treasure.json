@@ -8,22 +8,12 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 3,
-          "name": "sophisticatedbackpacks:iron_backpack"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 5,
-          "name": "sophisticatedbackpacks:gold_backpack"
-        },
-        {
-          "type": "minecraft:item",
           "weight": 2,
-          "name": "sophisticatedbackpacks:feeding_upgrade"
+          "name": "sophisticatedbackpacks:backpack"
         },
         {
           "type": "minecraft:empty",
-          "weight": 90
+          "weight": 98
         }
       ]
     }

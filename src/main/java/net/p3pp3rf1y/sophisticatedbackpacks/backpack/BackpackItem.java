@@ -57,8 +57,6 @@ import net.p3pp3rf1y.sophisticatedbackpacks.client.render.BackpackItemStackRende
 import net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContainer;
 import net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContext;
 import net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems;
-import net.p3pp3rf1y.sophisticatedbackpacks.upgrades.everlasting.EverlastingBackpackItemEntity;
-import net.p3pp3rf1y.sophisticatedbackpacks.upgrades.everlasting.EverlastingUpgradeItem;
 import net.p3pp3rf1y.sophisticatedbackpacks.util.InventoryInteractionHelper;
 import net.p3pp3rf1y.sophisticatedbackpacks.util.PlayerInventoryProvider;
 import net.p3pp3rf1y.sophisticatedcore.api.IStashStorageItem;
@@ -168,10 +166,6 @@ public class BackpackItem extends ItemBase implements IStashStorageItem {
 		return true;
 	}
 
-	private boolean hasEverlastingUpgrade(ItemStack stack) {
-		return stack.getCapability(CapabilityBackpackWrapper.getCapabilityInstance()).map(w -> !w.getUpgradeHandler().getTypeWrappers(EverlastingUpgradeItem.TYPE).isEmpty()).orElse(false);
-	}
-
 	@Nullable
 	@Override
 	public Entity createEntity(Level world, Entity entity, ItemStack itemstack) {
@@ -181,29 +175,7 @@ public class BackpackItem extends ItemBase implements IStashStorageItem {
 
 		UUIDDeduplicator.dedupeBackpackItemEntityInArea(itemEntity);
 
-		return hasEverlastingUpgrade(itemstack) ? createEverlastingBackpack(world, (ItemEntity) entity, itemstack) : null;
-	}
-
-	@Nullable
-	private EverlastingBackpackItemEntity createEverlastingBackpack(Level world, ItemEntity itemEntity, ItemStack itemstack) {
-		EverlastingBackpackItemEntity backpackItemEntity = ModItems.EVERLASTING_BACKPACK_ITEM_ENTITY.get().create(world);
-		if (backpackItemEntity != null) {
-			backpackItemEntity.setPos(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
-			backpackItemEntity.setItem(itemstack);
-			backpackItemEntity.setPickUpDelay(getPickupDelay(itemEntity));
-			backpackItemEntity.setThrower(itemEntity.getThrower());
-			backpackItemEntity.setDeltaMovement(itemEntity.getDeltaMovement());
-		}
-		return backpackItemEntity;
-	}
-
-	private int getPickupDelay(ItemEntity itemEntity) {
-		Integer result = ObfuscationReflectionHelper.getPrivateValue(ItemEntity.class, itemEntity, "f_31986_");
-		if (result == null) {
-			SophisticatedBackpacks.LOGGER.error("Reflection get of pickupDelay (pickupDelay) from ItemEntity returned null");
-			return 20;
-		}
-		return result;
+		return null;
 	}
 
 	@Override
@@ -379,7 +351,7 @@ public class BackpackItem extends ItemBase implements IStashStorageItem {
 
 	@Override
 	public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-		return stack.getItem() == ModItems.GOLD_BACKPACK.get();
+		return false;
 	}
 
 	@Override

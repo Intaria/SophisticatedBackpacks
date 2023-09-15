@@ -42,10 +42,6 @@ public class CuriosCompat implements ICompat {
 		modEventBus.addListener(this::sendImc);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			CuriosRendererRegistry.register(ModItems.BACKPACK.get(), BackpackCurioRenderer::new);
-			CuriosRendererRegistry.register(ModItems.IRON_BACKPACK.get(), BackpackCurioRenderer::new);
-			CuriosRendererRegistry.register(ModItems.GOLD_BACKPACK.get(), BackpackCurioRenderer::new);
-			CuriosRendererRegistry.register(ModItems.DIAMOND_BACKPACK.get(), BackpackCurioRenderer::new);
-			CuriosRendererRegistry.register(ModItems.NETHERITE_BACKPACK.get(), BackpackCurioRenderer::new);
 		});
 
 		IEventBus eventBus = MinecraftForge.EVENT_BUS;

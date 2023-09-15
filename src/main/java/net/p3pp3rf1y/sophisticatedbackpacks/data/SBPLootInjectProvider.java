@@ -33,40 +33,22 @@ public class SBPLootInjectProvider implements DataProvider {
 	public void run(CachedOutput cache) throws IOException {
 		Map<ResourceLocation, LootTable.Builder> tables = new HashMap<>();
 
-		tables.put(BuiltInLootTables.SIMPLE_DUNGEON, getLootTable(92,
-				getItemLootEntry(ModItems.BACKPACK.get(), 4),
-				getItemLootEntry(ModItems.IRON_BACKPACK.get(), 2),
-				getItemLootEntry(ModItems.PICKUP_UPGRADE.get(), 2)));
-		tables.put(BuiltInLootTables.ABANDONED_MINESHAFT, getLootTable(89,
-				getItemLootEntry(ModItems.BACKPACK.get(), 5),
-				getItemLootEntry(ModItems.IRON_BACKPACK.get(), 3),
-				getItemLootEntry(ModItems.GOLD_BACKPACK.get(), 1),
-				getItemLootEntry(ModItems.MAGNET_UPGRADE.get(), 2)));
-		tables.put(BuiltInLootTables.DESERT_PYRAMID, getLootTable(89,
-				getItemLootEntry(ModItems.BACKPACK.get(), 5),
-				getItemLootEntry(ModItems.IRON_BACKPACK.get(), 3),
-				getItemLootEntry(ModItems.GOLD_BACKPACK.get(), 1),
-				getItemLootEntry(ModItems.MAGNET_UPGRADE.get(), 2)));
-		tables.put(BuiltInLootTables.SHIPWRECK_TREASURE, getLootTable(92,
-				getItemLootEntry(ModItems.IRON_BACKPACK.get(), 4),
-				getItemLootEntry(ModItems.GOLD_BACKPACK.get(), 2),
-				getItemLootEntry(ModItems.ADVANCED_MAGNET_UPGRADE.get(), 2)));
-		tables.put(BuiltInLootTables.WOODLAND_MANSION, getLootTable(92,
-				getItemLootEntry(ModItems.IRON_BACKPACK.get(), 4),
-				getItemLootEntry(ModItems.GOLD_BACKPACK.get(), 2),
-				getItemLootEntry(ModItems.ADVANCED_MAGNET_UPGRADE.get(), 2)));
-		tables.put(BuiltInLootTables.NETHER_BRIDGE, getLootTable(90,
-				getItemLootEntry(ModItems.IRON_BACKPACK.get(), 5),
-				getItemLootEntry(ModItems.GOLD_BACKPACK.get(), 3),
-				getItemLootEntry(ModItems.FEEDING_UPGRADE.get(), 2)));
-		tables.put(BuiltInLootTables.BASTION_TREASURE, getLootTable(90,
-				getItemLootEntry(ModItems.IRON_BACKPACK.get(), 3),
-				getItemLootEntry(ModItems.GOLD_BACKPACK.get(), 5),
-				getItemLootEntry(ModItems.FEEDING_UPGRADE.get(), 2)));
-		tables.put(BuiltInLootTables.END_CITY_TREASURE, getLootTable(90,
-				getItemLootEntry(ModItems.DIAMOND_BACKPACK.get(), 3),
-				getItemLootEntry(ModItems.GOLD_BACKPACK.get(), 5),
-				getItemLootEntry(ModItems.ADVANCED_MAGNET_UPGRADE.get(), 2)));
+		tables.put(BuiltInLootTables.SIMPLE_DUNGEON, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
+		tables.put(BuiltInLootTables.ABANDONED_MINESHAFT, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
+		tables.put(BuiltInLootTables.DESERT_PYRAMID, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
+		tables.put(BuiltInLootTables.SHIPWRECK_TREASURE, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
+		tables.put(BuiltInLootTables.WOODLAND_MANSION, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
+		tables.put(BuiltInLootTables.NETHER_BRIDGE, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
+		tables.put(BuiltInLootTables.BASTION_TREASURE, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
+		tables.put(BuiltInLootTables.END_CITY_TREASURE, getLootTable(98,
+				getItemLootEntry(ModItems.BACKPACK.get(), 2)));
 
 		for (Map.Entry<ResourceLocation, LootTable.Builder> e : tables.entrySet()) {
 			Path path = getPath(generator.getOutputFolder(), e.getKey());

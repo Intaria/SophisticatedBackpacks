@@ -8,22 +8,12 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 3,
-          "name": "sophisticatedbackpacks:diamond_backpack"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 5,
-          "name": "sophisticatedbackpacks:gold_backpack"
-        },
-        {
-          "type": "minecraft:item",
           "weight": 2,
-          "name": "sophisticatedbackpacks:advanced_magnet_upgrade"
+          "name": "sophisticatedbackpacks:backpack"
         },
         {
           "type": "minecraft:empty",
-          "weight": 90
+          "weight": 98
         }
       ]
     }

@@ -51,7 +51,6 @@ import net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContainer;
 import net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContext;
 import net.p3pp3rf1y.sophisticatedbackpacks.init.ModBlocks;
 import net.p3pp3rf1y.sophisticatedbackpacks.init.ModItems;
-import net.p3pp3rf1y.sophisticatedbackpacks.upgrades.everlasting.EverlastingUpgradeItem;
 import net.p3pp3rf1y.sophisticatedcore.api.IStorageWrapper;
 import net.p3pp3rf1y.sophisticatedcore.api.IUpgradeRenderer;
 import net.p3pp3rf1y.sophisticatedcore.client.render.UpgradeRenderRegistry;
@@ -125,14 +124,7 @@ public class BackpackBlock extends Block implements EntityBlock, SimpleWaterlogg
 
 	@Override
 	public float getExplosionResistance(BlockState state, BlockGetter world, BlockPos pos, Explosion explosion) {
-		if (hasEverlastingUpgrade(world, pos)) {
-			return BEDROCK_RESISTANCE;
-		}
 		return super.getExplosionResistance(state, world, pos, explosion);
-	}
-
-	private boolean hasEverlastingUpgrade(BlockGetter world, BlockPos pos) {
-		return WorldHelper.getBlockEntity(world, pos, BackpackBlockEntity.class).map(te -> !te.getBackpackWrapper().getUpgradeHandler().getTypeWrappers(EverlastingUpgradeItem.TYPE).isEmpty()).orElse(false);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -267,9 +259,6 @@ public class BackpackBlock extends Block implements EntityBlock, SimpleWaterlogg
 
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity entity) {
-		if (hasEverlastingUpgrade(world, pos)) {
-			return false;
-		}
 		return super.canEntityDestroy(state, world, pos, entity);
 	}
 

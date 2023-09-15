@@ -9,16 +9,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.p3pp3rf1y.sophisticatedbackpacks.backpack.BackpackItem;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.FilteredUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.battery.BatteryUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.cooking.AutoCookingUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.cooking.CookingUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.magnet.MagnetUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.pump.PumpUpgradeConfig;
 import net.p3pp3rf1y.sophisticatedcore.upgrades.stack.StackUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.tank.TankUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.voiding.VoidUpgradeConfig;
-import net.p3pp3rf1y.sophisticatedcore.upgrades.xppump.XpPumpUpgradeConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nullable;
@@ -61,47 +52,13 @@ public class Config {
 		public final NoInteractionBlocks noInteractionBlocks;
 		public final NoConnectionBlocks noConnectionBlocks;
 		public final BackpackConfig leatherBackpack;
-		public final BackpackConfig ironBackpack;
-		public final BackpackConfig goldBackpack;
-		public final BackpackConfig diamondBackpack;
-		public final BackpackConfig netheriteBackpack;
-		public final FilteredUpgradeConfig compactingUpgrade;
-		public final FilteredUpgradeConfig advancedCompactingUpgrade;
-		public final FilteredUpgradeConfig depositUpgrade;
-		public final FilteredUpgradeConfig advancedDepositUpgrade;
-		public final FilteredUpgradeConfig feedingUpgrade;
-		public final FilteredUpgradeConfig advancedFeedingUpgrade;
-		public final FilteredUpgradeConfig filterUpgrade;
-		public final FilteredUpgradeConfig advancedFilterUpgrade;
-		public final MagnetUpgradeConfig magnetUpgrade;
-		public final MagnetUpgradeConfig advancedMagnetUpgrade;
-		public final FilteredUpgradeConfig pickupUpgrade;
-		public final FilteredUpgradeConfig advancedPickupUpgrade;
-		public final FilteredUpgradeConfig refillUpgrade;
-		public final FilteredUpgradeConfig advancedRefillUpgrade;
-		public final FilteredUpgradeConfig restockUpgrade;
-		public final FilteredUpgradeConfig advancedRestockUpgrade;
-		public final VoidUpgradeConfig voidUpgrade;
-		public final VoidUpgradeConfig advancedVoidUpgrade;
-		public final CookingUpgradeConfig smeltingUpgrade;
-		public final CookingUpgradeConfig smokingUpgrade;
-		public final CookingUpgradeConfig blastingUpgrade;
-		public final AutoCookingUpgradeConfig autoSmeltingUpgrade;
-		public final AutoCookingUpgradeConfig autoSmokingUpgrade;
-		public final AutoCookingUpgradeConfig autoBlastingUpgrade;
-		public final InceptionUpgradeConfig inceptionUpgrade;
 		public final EntityBackpackAdditionsConfig entityBackpackAdditions;
 		public final ForgeConfigSpec.BooleanValue itemFluidHandlerEnabled;
 		public final ForgeConfigSpec.BooleanValue allowOpeningOtherPlayerBackpacks;
 		public final ForgeConfigSpec.BooleanValue itemDisplayDisabled;
 		public final ForgeConfigSpec.BooleanValue tickDedupeLogicDisabled;
 		public final ForgeConfigSpec.BooleanValue canBePlacedInContainerItems;
-		public final FilteredUpgradeConfig toolSwapperUpgrade;
-		public final TankUpgradeConfig tankUpgrade;
-		public final BatteryUpgradeConfig batteryUpgrade;
 		public final StackUpgradeConfig stackUpgrade;
-		public final PumpUpgradeConfig pumpUpgrade;
-		public final XpPumpUpgradeConfig xpPumpUpgrade;
 		public final NerfsConfig nerfsConfig;
 
 
@@ -119,42 +76,8 @@ public class Config {
 			noConnectionBlocks = new NoConnectionBlocks(builder);
 
 			leatherBackpack = new BackpackConfig(builder, "Leather", 27, 1);
-			ironBackpack = new BackpackConfig(builder, "Iron", 54, 2);
-			goldBackpack = new BackpackConfig(builder, "Gold", 81, 3);
-			diamondBackpack = new BackpackConfig(builder, "Diamond", 108, 5);
-			netheriteBackpack = new BackpackConfig(builder, "Netherite", 120, 7);
-
-			compactingUpgrade = new FilteredUpgradeConfig(builder, "Compacting Upgrade", "compactingUpgrade", 9, 3);
-			advancedCompactingUpgrade = new FilteredUpgradeConfig(builder, "Advanced Compacting Upgrade", "advancedCompactingUpgrade", 16, 4);
-			depositUpgrade = new FilteredUpgradeConfig(builder, "Deposit Upgrade", "depositUpgrade", 9, 3);
-			advancedDepositUpgrade = new FilteredUpgradeConfig(builder, "Advanced Deposit Upgrade", "advancedDepositUpgrade", 16, 4);
-			feedingUpgrade = new FilteredUpgradeConfig(builder, "Feeding Upgrade", "feedingUpgrade", 9, 3);
-			advancedFeedingUpgrade = new FilteredUpgradeConfig(builder, "Advanced Feeding Upgrade", "advancedFeedingUpgrade", 16, 4);
-			filterUpgrade = new FilteredUpgradeConfig(builder, "Filter Upgrade", "filterUpgrade", 9, 3);
-			advancedFilterUpgrade = new FilteredUpgradeConfig(builder, "Advanced Filter Upgrade", "advancedFilterUpgrade", 16, 4);
-			magnetUpgrade = new MagnetUpgradeConfig(builder, "Magnet Upgrade", "magnetUpgrade", 9, 3, 3);
-			advancedMagnetUpgrade = new MagnetUpgradeConfig(builder, "Advanced Magnet Upgrade", "advancedMagnetUpgrade", 16, 4, 5);
-			pickupUpgrade = new FilteredUpgradeConfig(builder, "Pickup Upgrade", "pickupUpgrade", 9, 3);
-			advancedPickupUpgrade = new FilteredUpgradeConfig(builder, "Advanced Pickup Upgrade", "advancedPickupUpgrade", 16, 4);
-			refillUpgrade = new FilteredUpgradeConfig(builder, "Refill Upgrade", "refillUpgrade", 6, 3);
-			advancedRefillUpgrade = new FilteredUpgradeConfig(builder, "Advanced Refill Upgrade", "advancedRefillUpgrade", 12, 4);
-			restockUpgrade = new FilteredUpgradeConfig(builder, "Restock Upgrade", "restockUpgrade", 9, 3);
-			advancedRestockUpgrade = new FilteredUpgradeConfig(builder, "Advanced Restock Upgrade", "advancedRestockUpgrade", 16, 4);
-			voidUpgrade = new VoidUpgradeConfig(builder, "Void Upgrade", "voidUpgrade", 9, 3);
-			advancedVoidUpgrade = new VoidUpgradeConfig(builder, "Advanced Void Upgrade", "advancedVoidUpgrade", 16, 4);
+			
 			stackUpgrade = new StackUpgradeConfig(builder);
-			smeltingUpgrade = CookingUpgradeConfig.getInstance(builder, "Smelting Upgrade", "smeltingUpgrade");
-			smokingUpgrade = CookingUpgradeConfig.getInstance(builder, "Smoking Upgrade", "smokingUpgrade");
-			blastingUpgrade = CookingUpgradeConfig.getInstance(builder, "Blasting Upgrade", "blastingUpgrade");
-			autoSmeltingUpgrade = new AutoCookingUpgradeConfig(builder, "Auto-Smelting Upgrade", "autoSmeltingUpgrade");
-			autoSmokingUpgrade = new AutoCookingUpgradeConfig(builder, "Auto-Smoking Upgrade", "autoSmokingUpgrade");
-			autoBlastingUpgrade = new AutoCookingUpgradeConfig(builder, "Auto-Blasting Upgrade", "autoBlastingUpgrade");
-			inceptionUpgrade = new InceptionUpgradeConfig(builder);
-			toolSwapperUpgrade = new FilteredUpgradeConfig(builder, "Tool Swapper Upgrade", "toolSwapperUpgrade", 8, 4);
-			tankUpgrade = new TankUpgradeConfig(builder);
-			batteryUpgrade = new BatteryUpgradeConfig(builder);
-			pumpUpgrade = new PumpUpgradeConfig(builder);
-			xpPumpUpgrade = new XpPumpUpgradeConfig(builder);
 			entityBackpackAdditions = new EntityBackpackAdditionsConfig(builder);
 			nerfsConfig = new NerfsConfig(builder);
 
@@ -280,20 +203,6 @@ public class Config {
 				mapping.put(EntityType.ZOMBIE_VILLAGER, BuiltInLootTables.VILLAGE_ARMORER);
 				mapping.put(EntityType.ZOMBIFIED_PIGLIN, BuiltInLootTables.BASTION_OTHER);
 				return mapping;
-			}
-		}
-
-		public static class InceptionUpgradeConfig {
-			public final ForgeConfigSpec.BooleanValue upgradesUseInventoriesOfBackpacksInBackpack;
-			public final ForgeConfigSpec.BooleanValue upgradesInContainedBackpacksAreFunctional;
-
-			public InceptionUpgradeConfig(ForgeConfigSpec.Builder builder) {
-				builder.comment("Inception Upgrade Settings").push("inceptionUpgrade");
-				upgradesUseInventoriesOfBackpacksInBackpack = builder.comment("Allows / Disallows backpack upgrades to work with inventories of Backpacks in the Backpack with Inception Upgrade")
-						.define("upgradesUseInventoriesOfBackpacksInBackpack", true);
-				upgradesInContainedBackpacksAreFunctional = builder.comment("Allows / Disallows upgrades to be functional even when they are in Backpacks in the inventory of Backpack with Inception Upgrade")
-						.define("upgradesInContainedBackpacksAreFunctional", true);
-				builder.pop();
 			}
 		}
 
